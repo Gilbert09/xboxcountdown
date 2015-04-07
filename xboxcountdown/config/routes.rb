@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+    root :to => 'game#index'
+
+    get 'publisher' => 'publisher#index', as: 'publisher_all'
+    get 'publisher/:id' => 'publisher#get', as: 'publisher_get'
+
+    get 'game/:id' => 'game#get', as: 'game_get'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
