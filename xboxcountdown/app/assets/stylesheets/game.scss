@@ -1,3 +1,259 @@
 // Place all the styles related to the Game controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@font-face {
+	font-family: 'X360';
+	src: url('X360.eot');
+	src: url('X360.woff') format('woff'), 
+		 url('X360.ttf') format('truetype'), 
+		 url('X360.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face{ 
+	font-family: 'Prox';
+	src: url('proximanova-regular-webfont-webfont.eot');
+	src: url('proximanova-regular-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('proximanova-regular-webfont-webfont.woff') format('woff'),
+	     url('proximanova-regular-webfont-webfont.ttf') format('truetype'),
+	     url('proximanova-regular-webfont-webfont.svg#webfont') format('svg');
+}
+
+.X360 {
+	font-family: "X360";
+}
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	font-size: 14px;
+	font-family: "Arial";
+	background-color: #EBEBE9;
+	color: #545454;
+	margin: 0;
+}
+
+#header {
+	position: fixed;
+	background-color: #EBEBE9;
+	height: 40px;
+	webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+		-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    z-index: 100;
+	top: 0;
+	width: 100%;
+}
+
+#header span {
+	line-height: 40px;
+}
+
+#logo {
+	font-size: 33px;
+	padding: 0 10px;
+}
+
+#nav {
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+}
+
+#nav span {
+	margin: 0 5px;
+	padding: 0 5px;
+	font-size: 16px;
+	height: 40px;
+	display: inline-block;
+}
+
+#nav span:hover {
+	background-color: rgba(174, 174, 174, 0.60);
+	cursor: pointer;
+}
+
+#nav span.selected {
+	background-color: rgba(205, 205, 205, 0.60);
+}
+
+#container {
+	margin-top: 40px;
+}
+
+.item {
+	width: 300px;
+	height: 270px;
+	background-color: #F9F8FD;
+	-webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.35);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.35);
+	box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.35);
+	display: inline-block;
+	margin: 7px;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.italic.xbox {
+	background-color: #117d10;
+	border-radius: 10px;
+	color: white;
+	padding: 0 5px;
+}
+
+.italic.one {
+	background-color: #6B6B6B;
+	border-radius: 10px;
+	color: white;
+	padding: 0 5px;
+}
+
+.italic.xboxgold {
+	background-color: rgb(207, 185, 68);
+	border-radius: 10px;
+	color: white;
+	padding: 0 5px;
+	border: 2px solid rgb(17, 125, 16);
+}
+
+.italic.onegold {
+	background-color: rgb(207, 185, 68);
+	border-radius: 10px;
+	color: white;
+	padding: 0 5px;
+	border: 2px solid #6B6B6B;
+}
+
+.small {
+	font-size: 14px;
+}
+
+.large {
+	font-size: 20px;
+	color: #343434;
+}
+
+.time {
+	display: block;
+	margin-top: 2px;
+}
+
+.title-overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	height: 22px;
+	display: block;
+	margin-bottom: 2px;
+}
+
+.inset-input {
+	display: inline-block;
+	background-color: rgb(215, 215, 214);
+	margin: 0 5px;
+	padding: 0 5px;
+	font-size: 15px;
+	height: 29px;
+	border-radius: 3px;
+	border: 1px solid transparent;
+	border-top: none;
+	border-bottom: 1px solid #DDD;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #E9E9E7, 0 1px 0 #FFF;
+	position: absolute;
+	right: 392px;
+	top: 5px;
+}
+
+#menuButton {
+	display: inline-block;
+	position: absolute;
+	right: 365px;
+	top: 7px;
+	font-size: 26px;
+	color: rgb(174, 174, 174);
+}
+
+#menuButton:hover {
+	cursor: pointer;
+	color: rgb(84, 84, 84);
+}
+
+#menuButton div {
+	background-color: rgb(233, 233, 231);
+	position: absolute;
+	right: 0;
+	border: 1px solid rgb(174, 174, 174);
+	color: #545454;
+	width: 150px;
+	display: none;
+}
+
+#menuButton ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menuButton li {
+	transition: background-color 0.2s ease;
+	border-top: 1px solid rgb(215, 215, 214);
+	padding: 8px 5px;
+	font-size: 20px;
+	font-family: "Prox";
+}
+
+#menuButton li:hover {
+	cursor: pointer;
+	background-color: rgb(215, 215, 214);
+}
+
+#menuButton li:nth-child(1) {
+	border-top: none !important;
+}
+
+#overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.60);
+	top: 0;
+	left: 0;
+	z-index: 300;
+	display: none;
+}
+
+#popup {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: #F9F8FD;
+	-webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.35);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.35);
+	box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.35);
+	border: 1px solid gray;
+	z-index: 400;
+	display: none;
+	padding: 10px;
+	width: 400px;
+	height: 310px;
+	margin-left: -200px;
+	margin-top: -200px;
+}
+
+#popup span {
+	font-size: 20px;
+	font-family: "Prox";
+	margin-bottom: 7px;
+}
+
+#popup p {
+	font-size: 16px;
+	font-family: "Prox";
+	padding: 2px;
+}
