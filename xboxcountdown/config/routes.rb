@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     post 'game/create' => 'game#create', as: 'game_create'
 
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
+    get 'dashboard/games' => 'dashboard#games', as: 'dashboard_games'
+    get 'dashboard/games/add' => 'dashboard#addGame', as: 'dashboard_games_add'
+    post 'dashboard/games/add' => 'dashboard#createGame', as: 'dashboard_games_create'
     get 'dashboard/:id/edit' => 'dashboard#edit', as: 'dashboard_game_edit'
 
     get 'api/games' => 'api#index', as: 'api_games'

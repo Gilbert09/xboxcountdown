@@ -1,7 +1,22 @@
 class DashboardController < ApplicationController
 	def index
-		@games = Game.all.order(release_date: :desc)
+		@sidebarSelected = "dashboard"
 		render 'index'
+	end
+
+	def games
+		@games = Game.all.order(release_date: :desc)
+		@sidebarSelected = "view_games"
+		render 'games'
+	end
+
+	def addGame
+		@sidebarSelected = "add_game"
+		render 'add_game'
+	end
+
+	def createGame
+		throw
 	end
 
 	def import

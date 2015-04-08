@@ -1,8 +1,37 @@
 <div id="sidebar">
 	<ul>
-		<li>Dashboard</li>
-		<li>Hello</li>
-		<li class="selected">Games</li>
-		<li>Publishers</li>
+		<%= link_to dashboard_path do %>
+			<li <% if @sidebarSelected == "dashboard" then %> class="selected" <% end %>>
+					Dashboard <i class="fa fa-angle-right"></i>
+			</li>
+		<% end %>
+
+		<li class="dropdown <% if @sidebarSelected == "view_games" or @sidebarSelected == "add_game" then %>selected<% end %>">
+			<span>
+				Games <i class="fa fa-angle-right"></i>
+			</span>
+			<ul <% unless @sidebarSelected == "view_games" or @sidebarSelected == "add_game" then %>style="display: none;"<% end %>>
+				<%= link_to dashboard_games_path do %>
+					<li <% if @sidebarSelected == "view_games" then %> class="selected" <% end %>>
+						View Games
+					</li>
+				<% end %>
+				<%= link_to dashboard_games_add_path do %>
+					<li <% if @sidebarSelected == "add_game" then %> class="selected" <% end %>>
+						Add Game
+					</li>
+				<% end %>
+			</ul>
+		</li>
+
+		<li class="dropdown <% if @sidebarSelected == "view_publishers" or @sidebarSelected == "add_publisher" then %>selected<% end %>">
+			<span>
+				Publishers <i class="fa fa-angle-right"></i>
+			</span>
+			<ul <% unless @sidebarSelected == "view_publishers" or @sidebarSelected == "add_publisher" then %>style="display: none;"<% end %>>
+				<li <% if @sidebarSelected == "view_publishers" then %> class="selected" <% end %>>View Publishers</li>
+				<li <% if @sidebarSelected == "add_publisher" then %> class="selected" <% end %>>Add Publisher</li>
+			</ul>
+		</li>
 	</ul>
 </div>
