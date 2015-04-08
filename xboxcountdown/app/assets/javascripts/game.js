@@ -4,7 +4,7 @@ var overlayActive = false;
 
 $(document).ready(function() {
 	
-	$.getJSON("http://xboxcountdown.com/upcoming_games.json", function(data) {
+	$.getJSON("/api/games", function(data) {
 		$.each(data, function(key, val) {
 			var dateSplit = val.Date.split("/");
 			var date = new Date(dateSplit[2], dateSplit[1] - 1, dateSplit[0]);
@@ -13,7 +13,7 @@ $(document).ready(function() {
 			var consoleClass = "xbox360";
 			if (val.Console.indexOf("One") != -1)  consoleClass = "xboxone";
 
-			var html = "<div data-time-tick=\"" + date.getTime() + "\" class=\"item " + consoleClass + "\"><img style=\"padding: 5px;\" src=\"img/" + val.Img + "\" width=\"290\" height=\"200\" />";
+			var html = "<div data-time-tick=\"" + date.getTime() + "\" class=\"item " + consoleClass + "\"><img style=\"padding: 5px 5px 2px 5px;\" src=\"" + val.Img + "\" width=\"290\" height=\"200\" />";
 			html += "<div style=\"padding: 0 10px 10px 10px;\"><span class=\"large title-overflow\" title=\"" + val.Title + "\">" + val.Title + "</span>";
 			html += "<span class=\"italic small " + (val.Console == "Xbox 360" ? "xbox" : "one") + "\">" + val.Console + "</span><span class=\"time\" title=\"" + val.Date + "\"></span></div></div>";
 			var item = $.parseHTML(html);
@@ -47,7 +47,7 @@ $(document).ready(function() {
 			var consoleClass = "xbox360";
 			if (val.Console.indexOf("One") != -1)  consoleClass = "xboxone";
 
-			var html = "<div data-time-tick=\"" + endDate.getTime() + "\" class=\"item " + consoleClass + "\"><img style=\"padding: 5px;\" src=\"img/" + val.Img + "\" width=\"290\" height=\"200\" />";
+			var html = "<div data-time-tick=\"" + endDate.getTime() + "\" class=\"item " + consoleClass + "\"><img style=\"padding: 5px 5px 2px 5px;\" src=\"" + val.Img + "\" width=\"290\" height=\"200\" />";
 			html += "<div style=\"padding: 0 10px 10px 10px;\"><span class=\"large title-overflow\" title=\"" + val.Title + "\">" + val.Title + "</span>";
 			html += "<span class=\"italic small " + (val.Console == "Xbox 360" ? "xboxgold" : "onegold") + "\">" + val.Console + "</span>";
 			html += "<span class=\"time\" title=\"Games With Gold\">Ends: " + endDate.getDate() + " " + getMonth(endDate.getMonth()) + " " + endDate.getFullYear() + "</span></div></div>";

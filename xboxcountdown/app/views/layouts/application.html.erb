@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%= render 'layouts/header' %>
+<%= unless current_page?(dashboard_path) then render 'layouts/header' end %>
 
 <%= yield %>
 

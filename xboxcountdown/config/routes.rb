@@ -6,7 +6,14 @@ Rails.application.routes.draw do
     get 'publisher/:id' => 'publisher#get', as: 'publisher_get'
 
     get 'game/:id' => 'game#get', as: 'game_get'
+    post 'game/create' => 'game#create', as: 'game_create'
 
+    get 'dashboard' => 'dashboard#index', as: 'dashboard'
+    get 'dashboard/:id/edit' => 'dashboard#edit', as: 'dashboard_game_edit'
+
+    get 'api/games' => 'api#index', as: 'api_games'
+
+    get 'import' => 'dashboard#import'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

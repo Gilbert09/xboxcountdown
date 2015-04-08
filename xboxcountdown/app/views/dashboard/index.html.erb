@@ -1,0 +1,35 @@
+<%= render 'header' %>
+
+<%= render 'sidebar' %>
+
+<div id="container">
+	<div id="table">
+		<% @games.each do |game| %> 
+			<div class="row">
+				<div class="title">
+					<span><%= game.title %></span>
+				</div>
+				<div class="console">
+					<span><%= game.console %></span>
+				</div>
+				<div class="date">
+					<span><%= game.release_date.strftime('%d/%m/%Y') %></span>
+				</div>
+				<div class="edit">
+					<span><%= link_to "Edit", dashboard_game_edit_path(game) %></span>
+				</div>
+			</div>
+		<% end %>
+	</div>
+
+
+
+	<%= form_tag({controller: "game", action: "create"}, method: "post", :multipart => true ) do %>
+		<%= text_field_tag :title, nil, :placeholder => "Title" %>
+		<%= text_field_tag :releasedate, nil, :placeholder => "Release Date" %>
+		<%= text_field_tag :console, nil, :placeholder => "Console" %>
+		<%= file_field_tag :image %>
+		<%= submit_tag 'Add' %>
+	<% end %>
+</div>
+
