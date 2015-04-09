@@ -1,14 +1,9 @@
-<%= render 'header' %>
+ <%= render 'header' %>
 
 <%= render 'sidebar' %>
 
 <div id="container">
 	<div id="table" class="box">
-		<div id="search">
-			<span>Search: </span>
-			<input id="search-box" type="text" />
-		</div>
-
 		<% @games.each do |game| %> 
 			<div class="row">
 				<div class="title">
@@ -20,16 +15,14 @@
 				<div class="date">
 					<span><%= game.release_date.strftime('%d/%m/%Y') %></span>
 				</div>
-				<div class="state">
-					<span><%= game.state.slice(0,1).capitalize + game.state.slice(1..-1) %></span>
+				<div class="edit">
+					<span><%= link_to "View", dashboard_game_edit_path(game) %></span>
 				</div>
 				<div class="edit">
-					<span><%= link_to "Edit", dashboard_game_edit_path(game) %></span>
+					<span><%= link_to "Accept", dashboard_game_queue_accept_path(game) %></span>
 				</div>
 			</div>
 		<% end %>
-		<hr />
-		<%= will_paginate @games %>
 	</div>
 </div>
 

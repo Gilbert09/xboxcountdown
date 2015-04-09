@@ -11,8 +11,11 @@ Rails.application.routes.draw do
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
     get 'dashboard/games' => 'dashboard#games', as: 'dashboard_games'
     get 'dashboard/games/add' => 'dashboard#addGame', as: 'dashboard_games_add'
-    post 'dashboard/games/add' => 'dashboard#createGame', as: 'dashboard_games_create'
-    get 'dashboard/:id/edit' => 'dashboard#edit', as: 'dashboard_game_edit'
+    post 'dashboard/games/add' => 'dashboard#createGame', as: 'dashboard_games_add_save'
+    get 'dashboard/game/:id/edit' => 'dashboard#editGame', as: 'dashboard_game_edit'
+    post 'dashboard/game/:id/edit' => 'dashboard#saveGame', as: 'dashboard_game_edit_save'
+    get 'dashboard/games/queue' => 'dashboard#gameQueue', as: 'dashboard_game_queue'
+    get 'dashboard/games/queue/:id/accept' => 'dashboard#gameAccept', as: 'dashboard_game_queue_accept'
 
     get 'api/games' => 'api#index', as: 'api_games'
 

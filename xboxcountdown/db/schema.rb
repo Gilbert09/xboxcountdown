@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407100250) do
+ActiveRecord::Schema.define(version: 20150408204206) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "publisher_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150407100250) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "state"
   end
 
   create_table "publishers", force: :cascade do |t|

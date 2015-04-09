@@ -2,7 +2,7 @@ class ApiController < ApplicationController
 
 	def index
 		gameArray = Array.new
-		Game.all.each do |game|
+		Game.all.where("state = 'active'").each do |game|
 			gameArray.push({ :Title => game.title, :Date => game.release_date.strftime('%d/%m/%Y'), :Console => game.console, :Img => game.image.url(:medium) })
 		end
 		render json: gameArray

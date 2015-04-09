@@ -6,11 +6,11 @@
 			</li>
 		<% end %>
 
-		<li class="dropdown <% if @sidebarSelected == "view_games" or @sidebarSelected == "add_game" then %>selected<% end %>">
+		<li class="dropdown <% if @sidebarSelected == "view_games" or @sidebarSelected == "add_game" or @sidebarSelected == "game_queue" then %>selected<% end %>">
 			<span>
 				Games <i class="fa fa-angle-right"></i>
 			</span>
-			<ul <% unless @sidebarSelected == "view_games" or @sidebarSelected == "add_game" then %>style="display: none;"<% end %>>
+			<ul <% unless @sidebarSelected == "view_games" or @sidebarSelected == "add_game" or @sidebarSelected == "game_queue" then %>style="display: none;"<% end %>>
 				<%= link_to dashboard_games_path do %>
 					<li <% if @sidebarSelected == "view_games" then %> class="selected" <% end %>>
 						View Games
@@ -19,6 +19,11 @@
 				<%= link_to dashboard_games_add_path do %>
 					<li <% if @sidebarSelected == "add_game" then %> class="selected" <% end %>>
 						Add Game
+					</li>
+				<% end %>
+				<%= link_to dashboard_game_queue_path do %>
+					<li <% if @sidebarSelected == "game_queue" then %> class="selected" <% end %>>
+						View Queue
 					</li>
 				<% end %>
 			</ul>

@@ -1,0 +1,25 @@
+<%= render 'header' %>
+
+<%= render 'sidebar' %>
+
+<div id="container">
+	<div id="add-game-form" class="box">
+		<%= form_tag({controller: "dashboard", action: "saveGame"}, method: "post", :multipart => true ) do %>
+			<%= text_field_tag :title, @game.title, :placeholder => "Title" %>
+			<%= text_field_tag :releasedate, @game.release_date.strftime('%d/%m/%Y'), :placeholder => "Release Date dd/mm/yyyy" %>
+			<%= select_tag :console, options_for_select([ "Xbox One", "Xbox 360" ], @game.console) %>
+
+			<div id="hidden-file-upload">
+				<input type="file" id="image-uploader" />
+			</div>
+			<div id="img-wrapper" style="display: block;">
+				<img id="img" src="<%= @game.image.url(:medium) %>" width="500px" />
+			</div>
+
+			<input type="button" class="button" id="image-button" value="Add Image">
+
+			<input type="hidden" name="image" id="cropped-image" value="" />
+			<%= submit_tag 'Submit Edited Game', class: "button" %>
+		<% end %>
+	</div>
+</div>

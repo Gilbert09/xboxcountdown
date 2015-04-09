@@ -1,6 +1,6 @@
 class GameController < ApplicationController
 	def index
-		@games = Game.all
+		@games = Game.all.where("state = 'active'")
 		render 'index'
 	end
 
