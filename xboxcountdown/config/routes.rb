@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     post 'dashboard/games/add' => 'dashboard#createGame', as: 'dashboard_games_add_save'
     get 'dashboard/game/:id/edit' => 'dashboard#editGame', as: 'dashboard_game_edit'
     post 'dashboard/game/:id/edit' => 'dashboard#saveGame', as: 'dashboard_game_edit_save'
+    get 'dashboard/game/:id/view' => 'dashboard#viewGame', as: 'dashboard_game_view'
     get 'dashboard/games/queue' => 'dashboard#gameQueue', as: 'dashboard_game_queue'
     get 'dashboard/games/queue/:id/accept' => 'dashboard#gameAccept', as: 'dashboard_game_queue_accept'
 

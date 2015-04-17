@@ -6,10 +6,10 @@ class DashboardController < ApplicationController
 
 	def games
 		if params["s"] == "" or params["s"] == nil then 
-			@games = Game.all.paginate(:page => params[:page], :per_page => 20).order(release_date: :desc)
+			@games = Game.all.where(:state => "active").paginate(:page => params[:page], :per_page => 20).order(release_date: :desc)
 		else
 			query = params["s"]
-			@games = Game.all.where("title like ?", "%#{query}%").paginate(:page => params[:page], :per_page => 20).order(release_date: :desc)
+			@games = Game.all.where("title like ? AND state = ?", "%#{query}%", "active").paginate(:page => params[:page], :per_page => 20).order(release_date: :desc)
 		end
 		@sidebarSelected = "view_games"
 		render 'games'
@@ -31,6 +31,12 @@ class DashboardController < ApplicationController
 		redirect_to action: 'addGame'
 	end
 
+	def viewGame
+		@game = Game.find(params[:id])
+		@sidebarSelected = "game_queue"
+		render 'view_game'
+	end
+
 	def editGame
 		@game = Game.find(params[:id])
 		@sidebarSelected = "view_games"
@@ -38,18 +44,20 @@ class DashboardController < ApplicationController
 	end
 
 	def saveGame
-		game = Game.find(params[:id])
+		game = GameEdit.new
+		game.game_id = params[:id]
 		game.title = params["title"]
 		game.console = params["console"]
 		game.release_date = params["releasedate"].to_datetime
-		unless params["image"] == "" then game.image = params["image"] end
+		unless params["image"] == "" then game.image = params["image"] 
+		else game.image = Game.find(params[:id]).image end
 		game.state = "queue"
 		game.save
 		redirect_to action: 'games'
 	end
 
 	def gameQueue
-		@games = Game.all.where("state = 'queue'").order(release_date: :asc)
+		@games = GameEdit.all.where("state = 'queue'").order(created_at: :asc)
 		@sidebarSelected = "game_queue"
 		render 'game_queue'
 	end

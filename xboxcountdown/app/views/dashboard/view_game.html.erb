@@ -1,0 +1,21 @@
+<%= render 'header' %>
+
+<%= render 'sidebar' %>
+
+<div id="container">
+	<div id="add-game-form" class="box">
+		<div>
+			<span><%= @game.title %></span>
+		</div>
+		<div>
+			<span><%= @game.release_date.strftime("%d/%m/%Y") %></span>
+		</div>
+		<div>
+			<span><%= @game.console %></span>
+		</div>
+		<div>
+			<img src="<%= @game.image.url(:medium) %>">
+		</div>
+	</div>
+</div>
+

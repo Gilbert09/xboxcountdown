@@ -374,6 +374,15 @@ body {
 	text-decoration: underline;
 }
 
+#table a:link, #table a:visited {
+	text-decoration: underline;
+	color: #515253;
+}
+
+#table a:hover, #table a:active {
+	color: #23b7e5;
+}
+
 
 
 

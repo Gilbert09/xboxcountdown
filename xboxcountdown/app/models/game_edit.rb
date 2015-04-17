@@ -1,6 +1,5 @@
-class Game < ActiveRecord::Base
-	belongs_to :publisher, inverse_of: :games
-	has_many :game_edits
+class GameEdit < ActiveRecord::Base
+	belongs_to :game, inverse_of: :game_edits
 	before_create :randomize_file_name
 
 	has_attached_file :image, 
